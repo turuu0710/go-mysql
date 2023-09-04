@@ -1,6 +1,7 @@
 package main
 
 import (
+	"log"
 	"net/http"
 
 	"github.com/gorilla/mux"
@@ -10,7 +11,7 @@ import (
 
 func main() {
 	r := mux.NewRouter()
-	routes.RegisterBookStoreRoutes()
+	routes.RegisterBookStoreRoutes(r)
 	http.Handle("/", r)
-	logg.Fatal(http.ListenAndServe("localhost:9010", r))
+	log.Fatal(http.ListenAndServe("localhost:9010", r))
 }
